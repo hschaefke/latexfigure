@@ -33,11 +33,11 @@ lf.setup(
     minor_fontsize=8,
 )
 
-plt.figure(figsize=figsize(ratio=16/9))
+plt.figure(figsize=figsize_text())
 plt.plot(...)
 
 # saves by default as .pdf
-savefig("my_figure")
+lf.savefig("my_figure")
 ```
 
 In Latex:
@@ -113,6 +113,8 @@ ax.set_xlabel("x")
 ax.set_ylabel("sqrt(x)")
 lf.savefig("figure_columnwidth")  # saved as PDF by default
 ```
+
+## Including figures in LaTeX
 
 In LaTeX, the generated figures can be included directly without additional scaling:
 

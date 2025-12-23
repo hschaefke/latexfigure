@@ -1,0 +1,44 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[10pt,twocolumn]{article}
+
+\usepackage{lipsum}
+
+\usepackage{layouts}  % only necessary for printing lengths in mm/cm
+
+\title{\LARGE \bf Minimal Example for Measuring LaTeX Widths}
+\author{Hendrik Sch\"afke}
+\date{} % remove date completely
+
+\begin{document}
+	
+	\maketitle
+	\thispagestyle{empty}
+	\pagestyle{empty}
+	
+	\section*{Abstract}
+	\lipsum[1][1-3]
+	
+	\section{Introduction}
+	
+	% --- Column width (pt + mm) ---
+	Measured single-column width:\\
+	\the\columnwidth\\
+	\printinunitsof{mm}\prntlen{\columnwidth}\\
+	\rule{\columnwidth}{0.4pt}\\
+	% --- Full text width (pt + mm) ---
+	Measured full text width (double-column):\\
+	\the\textwidth\\
+	\printinunitsof{mm}\prntlen{\textwidth}\\
+	\rule{\textwidth}{0.4pt}\\
+	
+	\lipsum[1][1-4]
+	
+	\section{Main Section}
+	\lipsum[1][1-8]
+	
+	\begin{thebibliography}{99}
+		\bibitem{c1}
+		A. Author, “Example reference entry,” Journal Name, 2024.
+	\end{thebibliography}
+	
+\end{document}

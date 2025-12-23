@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "latexfigure"
+version = "1.4.0"
+dependencies = [
+    "latexfigure",
+]
+
+[tool.setuptools]
+py-modules = ["latexfigure"]

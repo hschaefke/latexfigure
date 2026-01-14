@@ -34,7 +34,10 @@ lf.setup(
 )
 
 plt.figure(figsize=figsize_text())
-plt.plot(...)
+
+# example plot
+x = np.linspace(0, 2*np.pi, 100)
+plt.plot(x, np.sin(x))
 
 # saves by default as .pdf
 lf.savefig("my_figure")

@@ -291,20 +291,23 @@ def show(filename: str | None = None, dpi: int = 200):
     Useful in `backend="pgf"` mode, or to preview the exact exported PDF
     (pixel-faithful, unlike the `backend="inline"` on-screen render).
 
-    Requires PyMuPDF: ``pip install latexfigure[preview]``.
+    Renders the PDF with PyMuPDF (a declared dependency) and displays it via
+    IPython, so it is meant to be called from a notebook.
 
     Args:
         filename (str, optional): PDF to display. Defaults to the file most
             recently written by `savefig`.
         dpi (int, optional): Rasterization resolution. Defaults to 200.
     """
+    import fitz  # PyMuPDF (declared dependency)
+
     try:
-        import fitz  # PyMuPDF
+        from IPython.display import Image, display
     except ImportError as e:
         raise ImportError(
-            "show() needs PyMuPDF. Install it with: pip install latexfigure[preview]"
+            "show() displays via IPython and is meant for notebooks; "
+            "no IPython is available in this environment."
         ) from e
-    from IPython.display import Image, display
 
     path = filename or _last_saved
     if path is None:

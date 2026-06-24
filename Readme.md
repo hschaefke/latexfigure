@@ -23,14 +23,22 @@ The overall structure and design of the original project are preserved.
 
 ## Requirements
 
-A working LaTeX installation is required (text is typeset by LaTeX). For the
-inline preview you additionally need `pdflatex`, `dvipng` and `ghostscript`
-(all shipped with TeX Live / MacTeX).
+A working LaTeX installation is required (text is typeset by LaTeX). For inline
+display and previews you additionally need `pdflatex`, `dvipng` and
+`ghostscript` (all shipped with TeX Live / MacTeX).
 
-Install with the optional `preview` extra to enable `lf.show()`:
+`lf.show()` works out of the box — PyMuPDF is a regular dependency. It renders
+the preview inline via IPython, so call it from a notebook.
+
+## Runnable example
+
+[`example.py`](example.py) is a complete, runnable demo that produces a
+single-column and a full-width figure; [`example.tex`](example.tex) embeds both
+at their natural size. To reproduce [`example.pdf`](example.pdf):
 
 ```bash
-pip install "latexfigure[preview] @ git+https://github.com/hschaefke/latexfigure"
+python example.py        # writes plot_columnwidth.pdf + plot_textwidth.pdf
+pdflatex example.tex     # compiles example.pdf with both figures embedded
 ```
 
 ## Getting started
@@ -71,8 +79,7 @@ pgf/pdflatex pipeline, so the **saved PDF is full pgf quality** regardless of
 the display backend.
 
 The on-screen inline preview is not pixel-identical to the exported PDF. For an
-exact, pixel-faithful preview of the file you just saved, use `lf.show()` (needs
-the `preview` extra):
+exact, pixel-faithful preview of the file you just saved, use `lf.show()`:
 
 ```python
 lf.savefig("my_figure")
@@ -229,5 +236,5 @@ Version 1.5 cleans up several rough edges. If you are upgrading from an earlier
 - **`utils_adjust_ligher_grid` was renamed to `utils_adjust_lighter_grid`**
   (typo fix).
 - **Self-dependency removed**: `pyproject.toml` no longer lists `latexfigure` as
-  its own dependency; `matplotlib>=3.6` is the runtime dependency. Install the
-  `preview` extra for `lf.show()`.
+  its own dependency; `matplotlib>=3.6` and `PyMuPDF` (for `lf.show()`) are the
+  runtime dependencies.

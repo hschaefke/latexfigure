@@ -1,6 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% latexfigure example document.
+% Generate the figures first, then compile this file:
+%   python example.py        % writes plot_columnwidth.pdf + plot_textwidth.pdf
+%   pdflatex example.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[10pt,twocolumn]{article}
 
+\usepackage{graphicx}  % for \includegraphics
 \usepackage{lipsum}
 
 \usepackage{layouts}  % only necessary for printing lengths in mm/cm
@@ -10,16 +16,16 @@
 \date{} % remove date completely
 
 \begin{document}
-	
+
 	\maketitle
 	\thispagestyle{empty}
 	\pagestyle{empty}
-	
+
 	\section*{Abstract}
 	\lipsum[1][1-3]
-	
+
 	\section{Introduction}
-	
+
 	% --- Column width (pt + mm) ---
 	Measured single-column width:\\
 	\the\columnwidth\\
@@ -30,15 +36,39 @@
 	\the\textwidth\\
 	\printinunitsof{mm}\prntlen{\textwidth}\\
 	\rule{\textwidth}{0.4pt}\\
-	
+
 	\lipsum[1][1-4]
-	
+
+	% --- Single-column figure: lf.figsize_column() ---
+	% Sized to \columnwidth by example.py, so it is included at natural size.
+	\begin{figure}[t]
+		\centering
+		\includegraphics{plot_columnwidth.pdf}
+		\caption{Single-column figure, sized with \texttt{lf.figsize\_column()}.}
+		\label{fig:columnwidth}
+	\end{figure}
+
 	\section{Main Section}
 	\lipsum[1][1-8]
-	
+
+	% --- Full text width figure across both columns: lf.figsize_text() ---
+	% Sized to \textwidth by example.py, so it is included at natural size.
+	\begin{figure*}[t]
+		\centering
+		\includegraphics{plot_textwidth.pdf}
+		\caption{Full text width figure spanning both columns, sized with
+			\texttt{lf.figsize\_text()}.}
+		\label{fig:textwidth}
+	\end{figure*}
+
+	\lipsum[2-4]
+
+	\section{Discussion}
+	\lipsum[3-5]
+
 	\begin{thebibliography}{99}
 		\bibitem{c1}
 		A. Author, “Example reference entry,” Journal Name, 2024.
 	\end{thebibliography}
-	
+
 \end{document}

@@ -11,13 +11,10 @@ requires-python = ">=3.10"
 license = { text = "MIT" }
 dependencies = [
     "matplotlib>=3.6",
-]
-
-[project.optional-dependencies]
-# Enables lf.show() / lf.savefig_show() for inline PDF previews.
-preview = [
+    # Used by show() / savefig_show() to rasterize the exported PDF for an
+    # inline preview. Self-contained wheel; display happens via IPython
+    # (imported lazily, present in any notebook).
     "PyMuPDF",
-    "IPython",
 ]
 
 [tool.setuptools]

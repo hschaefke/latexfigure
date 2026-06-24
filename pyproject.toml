@@ -4,9 +4,20 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "latexfigure"
-version = "1.0.0"
+version = "1.5.0"
+description = "Publication-quality Matplotlib figures sized to match your LaTeX document."
+readme = "Readme.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
 dependencies = [
-    "latexfigure",
+    "matplotlib>=3.6",
+]
+
+[project.optional-dependencies]
+# Enables lf.show() / lf.savefig_show() for inline PDF previews.
+preview = [
+    "PyMuPDF",
+    "IPython",
 ]
 
 [tool.setuptools]
